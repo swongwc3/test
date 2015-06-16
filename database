@@ -1,0 +1,6 @@
+CREATE TABLE Sample (ID int(8) primary KEY AUTO_INCREMENT, Name varchar(255), LName varchar(255));
+INSERT INTO Sample (Name, LName)
+VALUES ('Hello', 'There');
+
+SELECT * FROM Sample;
+SHOW TABLES;
