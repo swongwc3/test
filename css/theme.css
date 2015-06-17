@@ -1,0 +1,131 @@
+body {
+    font-family: "Verdana";
+    font-size: 100%;
+    background-color: #25455E;
+
+}
+
+div {
+    border-radius: 3px;
+}
+h1 {
+    text-align: center;
+    background-color: #777F85;
+    letter-spacing: 10px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 0.90em;
+    font-variant: small-caps;
+}
+
+::selection {
+    color: #86EBA7;
+    background: white;
+}
+
+p {
+    font-size: 0.75em;
+    text-indent: 10px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+p::first-line {
+    color: #FDB74A;
+    font-variant: small-caps;
+}
+
+p::first-letter {
+    font-size: 0.95em;
+    font-weight: bold;
+}
+
+div > p {
+    background-color: white;
+    width: 90%;
+    align-content: center;
+    padding: 2px;
+}
+
+a:link {
+    color: #5582BB;
+}
+
+a:visited {
+    color: #25455E;
+}
+
+a:hover {
+    color: #B7DCEE;
+}
+
+a:active {
+    color: #FBDD67;
+}
+
+.paper {
+    background-color: #5582BB;
+    padding: 5px;
+    margin: 5px;
+    float: left;
+    width: 30%;
+
+}
+
+#timebox {
+    background-color: #777F85;
+    font-size: 0.65em;
+    padding: 2px;
+    margin: 5px;
+    width: 60%;
+    float: right;
+}
+
+.morebox {
+    font-size: 0.65em;
+    padding-left: 2px;
+    padding-right: 2px;
+    width: 25%;
+    float: right;
+    margin: 5px;
+    background-color: #777F85;
+}
+
+ul {
+    list-style-type: none;
+    font-size: 0.70em;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    float: left;
+    text-align: center;
+}
+
+a {
+    display: block;
+    width: 60px;
+    background-color: #B7DCEE;
+    text-decoration: none;
+}
+
+q:lang(yo) {
+    quotes: "!!" "!!";
+}
+
+.countdown {
+    clear: both;
+    float: left;
+    font-size: 0.75em;
+    width: 80%;
+}
+.clear {
+    clear: both;
+    background-color: #FDB74A;
+    height: 100px;
+    width: 30%;
+}
+#left {
+    float: right;
+}

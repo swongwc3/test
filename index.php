@@ -1,217 +1,76 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
     <style>
+        .starter-template {
+            padding: 40px 15px;
+            text-align: center;
+        }
         body {
-            font-family: "Verdana";
-            font-size: 100%;
-            background-color: #25455E;
-
+            padding-top: 50px;
         }
 
-        div {
-            border-radius: 3px;
-        }
-        h1 {
-            text-align: center;
-            background-color: #777F85;
-            letter-spacing: 10px;
-            font-family: Tahoma, Geneva, sans-serif;
-            font-size: 0.90em;
-            font-variant: small-caps;
+        .intro {
+            padding: 20px 10px;
         }
 
-        ::selection {
-            color: #86EBA7;
-            background: white;
+        .intro > p {
+            color: blue;
         }
 
-        p {
-            font-size: 0.75em;
-            text-indent: 10px;
-            margin: auto;
-            border-radius: 5px;
+        .box {
+            padding: 10px 5px;
         }
 
-        p::first-line {
-            color: #FDB74A;
-            font-variant: small-caps;
-        }
-
-        p::first-letter {
-            font-size: 0.95em;
-            font-weight: bold;
-        }
-
-        div > p {
-            background-color: white;
-            width: 90%;
-            align-content: center;
-            padding: 2px;
-        }
-
-        a:link {
-            color: #5582BB;
-        }
-
-        a:visited {
-            color: #25455E;
-        }
-
-        a:hover {
-            color: #B7DCEE;
-        }
-
-        a:active {
-            color: #FBDD67;
-        }
-
-        .paper {
-            background-color: #5582BB;
-            padding: 5px;
-            margin: 5px;
-            float: left;
-            width: 30%;
-
-        }
-
-        #timebox {
-            background-color: #777F85;
-            font-size: 0.65em;
-            padding: 2px;
-            margin: 5px;
-            width: 60%;
-            float: right;
-        }
-
-        .morebox {
-            font-size: 0.65em;
-            padding-left: 2px;
-            padding-right: 2px;
-            width: 25%;
-            float: right;
-            margin: 5px;
-            background-color: #777F85;
-        }
-
-        ul {
-            list-style-type: none;
-            font-size: 0.70em;
-            overflow: hidden;
-            margin: 0;
-            padding 0;
-        }
-
-        li {
-            float: left;
-            text-align: center;
-        }
-
-        a {
-            display: block;
-            width: 60;
-            background-color: #B7DCEE;
-            text-decoration: none;
-        }
-
-        q:lang(yo) {
-            quotes: "!!" "!!";
-        }
-
-        .countdown {
-            clear: both;
-            float: left;
-            font-size: 0.75em;
-            width: 80%;
-        }
-        .clear {
-            clear: both;
-            background-color: #FDB74A;
-            height: 100px;
-            width: 30%;
-        }
-        #left {
-            float: right;
+        .box > p {
+            color: green;
         }
     </style>
 </head>
 
 <body>
 
-<h1>Sharon's Sample Test Page!</h1>
-
-<div class = "paper">
-    <p>
-        This is just a thing where I put together php, css, and html stuff!
-    </p>
-    <ul>
-        <li>
-           <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">Page 2</a>
-        </li>
-        <li>
-            <a href="#">Page 3</a>
-        </li>
-    </ul>
-
-    <div class = "countdown morebox">
-        <q lang="yo">
-            <?php
-            $target = mktime(0,0,0,6,30,2015);
-            $today = time();
-            $dif = $target - $today;
-            $days = floor($dif/86400);
-            $hours = floor(($dif - ($days*86400)) / 3600);
-            $mins = floor(($dif - ($hours*3600) - ($days*86400)) / 60);
-            $secs = floor($dif % 60);
-            echo 'Time until September 30, 2015 is... ' . $days . ':' . $hours . ':' . $mins . ':' . $secs . '.';
-
-            ?>
-        </q>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.php">Home</a></li>
+                <li><a href="set.php">Sets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
     </div>
-</div>
-<div class="clear">
+</nav>
 
-</div>
+<div class="container">
 
-<div id = "left">
-<div id = "timebox">
+    <div class="starter-template">
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
 
-<?php
-/**
- * Created by PhpStorm.
- * User: Sharon
- * Date: 6/15/2015
- * Time: 2:57 PM
- */
+    <div class="intro">
+        <h2>Header 2</h2>
+        <p>Sample text in intro</p>
+    </div>
 
-date_default_timezone_set('America/Los_Angeles');
+    <div class="box">
+        <h3>Header 3</h3>
+        <p>Things in the container but not in the starter-template.</p>
+    </div>
 
-echo '<strong>Currently: ' . date('F j, Y h:i:sa P') . 'GMT</strong></br>';
-
-/*
- * http://php.net/manual/en/function.date.php
- * 'm/d/y' - 06/15/2015
- * 'm/d/Y' - 06/15/2015
- * 'H:i:s' - 00:21:45
- * 'g:i A' - 5:45 PM
- * 'G:ia' - 05:45pm
- * '\o\n l jS F Y' - on Saturday 24th March 2012
- * j - day (jS 24th)
- * F - month (march)
- * l - day of week (Saturday)
- */
-?>
-</div>
-
-            <div class="morebox">stuff underneath the timebox!</div>
-            <div class="morebox">stuff underneath the timebox!</div>
-            <div class="morebox">stuff underneath the timebox!</div>
-
-</div>
-
-
-
+</div><!-- /.container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body></html>
