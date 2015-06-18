@@ -3,10 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
-
     <style>
-
-
         body {
             padding-top: 50px;
         }
@@ -22,6 +19,8 @@
     </style>
 </head>
 <body style="background-color: #999">
+
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">

@@ -1,6 +1,59 @@
-CREATE TABLE Sample (ID int(8) primary KEY AUTO_INCREMENT, Name varchar(255), LName varchar(255));
-INSERT INTO Sample (Name, LName)
-VALUES ('Hello', 'There');
+CREATE TABLE Items (ID int(8) primary KEY AUTO_INCREMENT, SetID int(8), TypeID int(8), HP decimal(3,1), PA int(4), MA int(4), PD int(4), MD int(4), Crit decimal(3,1), ADmg decimal(3,1), RDmg decimal(3,1), ACharge decimal(3,1), ATime decimal(4,2), ASpd decimal(3,1), MSpd decimal(3,1), JSpd decimal(3,1), Acc decimal(3,1), Eva decimal(3,1), ARes int(4), SRes int(4), ResTypeID int(8), SpEff varchar(255), SetEffect tinyint(1));
 
-SELECT * FROM Sample;
-SHOW TABLES;
+
+CREATE TABLE Category (CatID int(8) PRIMARY KEY AUTO_INCREMENT, CatName varchar(50));
+
+INSERT INTO Category (CatName) Values ('Body'),('Accessory');
+
+/* For calculating set effects in the future?
+CREATE TABLE SetEffect (SEID int(8) PRIMARY KEY AUTO_INCREMENT, SetEffName varchar(50));
+INSERT INTO SetEffect (SetEffName) Values ('Armor Set Effect');
+INSERT INTO SetEffect (SetEffName) Values ('Weapon / Accessory Set Effect');
+*/
+
+
+CREATE TABLE Type (TypeID int(8) PRIMARY KEY AUTO_INCREMENT, TypeName varchar(50), CatID int(8));
+INSERT INTO Type (TypeName, CatID) Values ('Hair', 1);
+INSERT INTO Type (TypeName, CatID) Values ('Top', 1);
+INSERT INTO Type (TypeName, CatID) Values ('Bottom', 1);
+INSERT INTO Type (TypeName, CatID) Values ('Gloves', 1);
+INSERT INTO Type (TypeName, CatID) Values ('Shoes', 1);
+INSERT INTO Type (TypeName, CatID) Values ('Weapon', 2);
+INSERT INTO Type (TypeName, CatID) Values ('Head', 2);
+INSERT INTO Type (TypeName, CatID) Values ('Eyes', 2);
+INSERT INTO Type (TypeName, CatID) Values ('Mouth', 2);
+INSERT INTO Type (TypeName, CatID) Values ('Top', 2);
+INSERT INTO Type (TypeName, CatID) Values ('Bottom', 2);
+INSERT INTO Type (TypeName, CatID) Values ('Gloves', 2);
+INSERT INTO Type (TypeName, CatID) Values ('2pcs.', 1);
+INSERT INTO Type (TypeName, CatID) Values ('3pcs.', 1);
+INSERT INTO Type (TypeName, CatID) Values ('4pcs.', 1);
+INSERT INTO Type (TypeName, CatID) Values ('5pcs.', 1);
+INSERT INTO Type (TypeName, CatID) Values ('2pcs.', 2);
+INSERT INTO Type (TypeName, CatID) Values ('3pcs.', 2);
+INSERT INTO Type (TypeName, CatID) Values ('4pcs.', 2);
+
+CREATE TABLE Sets (SetID int(8) PRIMARY KEY AUTO_INCREMENT, SetName varchar(50), SetAbbr varchar(10));
+INSERT INTO Sets (SetName, SetAbbr) Values ('Arch Angel', 'AA');
+INSERT INTO Sets (SetName, SetAbbr) Values ('Arch Devil', 'AD');
+INSERT INTO Sets (SetName, SetAbbr) Values ('El Officer', 'EO');
+INSERT INTO Sets (SetName, SetAbbr) Values ('Nasod Battle Suit', 'NBS');
+INSERT INTO Sets (SetName, SetAbbr) Values ('Nasod Battle Suit MK-2', 'NBS MK-2');
+
+CREATE TABLE Element (ElemID int(8) PRIMARY KEY AUTO_INCREMENT, ElemName varchar(20));
+INSERT INTO Element (ElemName) Values ('Fire'),('Water'),('Poison'),('Wind'),('Light'),('Darkness');
+
+INSERT INTO Items (SetID, TypeID, ACharge, SetEffect) Values (1, 1, 2.0, 1);
+INSERT INTO Items (SetID, TypeID, HP, SetEffect) Values (1, 2, 2.0, 1);
+INSERT INTO Items (SetID, TypeID, HP, SetEffect) Values (1, 3, 2.0, 1);
+INSERT INTO Items (SetID, TypeID, Acc, SetEffect) Values (1, 4, 2.0, 1);
+INSERT INTO Items (SetID, TypeID, MSpd, JSpd, SetEffect) Values (1, 5, 2.0, 2.0, 1);
+INSERT INTO Items (SetID, TypeID, Eva, SetEffect) Values (1, 13, 2, 2);
+INSERT INTO Items (SetID, TypeID, ARes, SetEffect) Values (1, 15, 40, 2);
+INSERT INTO Items (SetID, TypeID, PA, MA, PD, MD, SetEffect) Values (1, 15, 100, 100, 100, 100, 2);
+INSERT INTO Items (SetID, TypeID, Crit, Eva, SetEffect) VALUES (1, 6, 2.0, 2.0, 0);
+INSERT INTO Items (SetID, TypeID, PA, MA, PD, MD, Crit, Acc, SetEffect) VALUES (1, 8, 20, 20, 5, 5, 2.0, 2.0, 1);
+INSERT INTO Items (SetID, TypeID, PA, MA, PD, MD, ASpd, MSpd, JSpd, SetEffect) VALUES (1, 10, 25, 25, 10, 10, 1.0, 3.0, 3.0, 1);
+INSERT INTO Items (SetID, TypeID, PA, MA, Crit, MSpd, JSpd, SetEffect) VALUES (1, 11, 25, 25, 1.5, 3.0, 3.0, 1);
+INSERT INTO Items (SetID, TypeID, ATime, SetEffect) VALUES (1, 17, 30, 2);
+INSERT INTO Items (SetID, TypeID, ASpd, SetEffect) VALUES (1, 18, 2.5, 2);
