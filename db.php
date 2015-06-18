@@ -43,6 +43,8 @@ class DB {
         return mysqli_insert_id(self::connection());
     }
 
+
+
     public static function iid()
     {
         return mysqli_insert_id(self::connection());
