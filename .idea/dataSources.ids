@@ -21,6 +21,7 @@
       <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="SetID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="TypeID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PartID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="HP" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
       <column name="PA" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="MA" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
@@ -42,6 +43,11 @@
       <column name="SpEff" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="SetEffect" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="parts" schema="" catalog="my_db" type="TABLE">
+      <column name="PartID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="PartName" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="PartID"/>
     </table>
     <table name="sample" schema="" catalog="my_db" type="TABLE">
       <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

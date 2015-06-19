@@ -4,33 +4,22 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <style>
-        .starter-template {
-            padding: 40px 15px;
-            text-align: center;
-        }
         body {
             padding-top: 50px;
         }
 
-        .intro {
-            padding: 20px 10px;
+        h3, h4 {
+            text-align: center;
         }
 
-        .intro > p {
-            color: blue;
+        .media p {
+            text-align: left;
         }
 
-        .box {
-            padding: 10px 5px;
-        }
-
-        .box > p {
-            color: green;
-        }
     </style>
 </head>
+<body style="background-color: #999">
 
-<body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -45,32 +34,22 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="sets.php">Sets</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li class="active"><a href="sets.php">Sets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
 
-<div class="container">
+<div class="container" style="background-color: #ffffff;">asd
 
-    <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-    </div>
 
-    <div class="intro">
-        <h2>Header 2</h2>
-        <p>Sample text in intro</p>
-    </div>
+    <!-- list of sets -->
 
-    <div class="box">
-        <h3>Header 3</h3>
-        <p>Things in the container but not in the starter-template.</p>
-    </div>
-
-</div><!-- /.container -->
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-</body></html>
+</body>
+
+</html>

@@ -3,38 +3,64 @@
     Search by...
     Stats
 -->
-
-<form method="POST" action="searchform.php">
-    <input type="hidden" name="formsubmit" value="1" />
-        <label for="query">Stat Type</label>
-        <input type="text" id="query" name="query" value="<?php echo isset($_POST['query'])?$_POST['query']:''; ?>" />
-    <input type="submit" value="Search" />
-</form>
 <?php
     include_once('db.php');
-
+$result = '';
    if(isset($_POST['formsubmit'])) {
+       /*
        $query = DB::cleanse($_POST['query']);
        $search = $_POST['query'];
-       $sql = "SELECT i.*, s.SetName, s.SetAbbr,  t.TypeName FROM items i INNER JOIN sets s ON i.SetID=s.SetID JOIN type t ON i.TypeID=t.TypeID WHERE $search IS NOT NULL ORDER BY i.ID";
-       $results = DB::sql($sql);
-       if (sizeof($results)) {
-           foreach ($results as $result) {
-               echo $result['SetName'] . $result['TypeName'] . '<br>';
-               foreach ($result as $key => $value) {
-                   if ($value != null) {
-                       echo $key . $value . '<br>';
-                   }
+       */
 
-               }
-               echo '<br>';
-               /*
-                * echo "<a href='item.php?id={$result['ID']}'>{$result['i.SetName']} ' ' {$result['i.SetType']}</a>";
-               */
-           }
-       } else {
-           echo 'No results';
+       $sets = $_POST['sets'];
+       $stat = $_POST['stat'];
+
+       $search = "";
+
+       if ($sets != '0') {
+           $sets = "SetAbbr='" . $sets . "'";
+           $search = $sets;
+
+       }
+       if ($stat != '0') {
+           $stat = $stat . " IS NOT NULL";
+           $search = $stat;
+       }
+       if ($sets != '0' && $stat != '0') {
+           $search = $sets . " AND " . $stat;
        }
 
+       $sql = "SELECT i.*, s.SetName, s.SetAbbr, t.TypeName, p.PartName FROM items i INNER JOIN sets s ON i.SetID=s.SetID JOIN type t ON i.TypeID=t.TypeID JOIN parts p ON i.PartID=p.PartID WHERE $search ORDER BY i.ID";
+
+       /*
+        *
+        * SELECT i.*, s.SetName, s.SetAbbr, t.TypeName, p.PartName FROM items i INNER JOIN sets s ON i.SetID=s.SetID JOIN type t ON i.TypeID=t.TypeID JOIN parts p ON i.PartID=p.PartID WHERE i.ID=$ID ORDER BY i.ID
+        */
+
+       /*
+        * $sql = "SELECT i.*, s.SetName, s.SetAbbr,  t.TypeName FROM items i INNER JOIN sets s ON i.SetID=s.SetID JOIN type t ON i.TypeID=t.TypeID WHERE $search ORDER BY i.ID";
+       */
+
+       $results = DB::sql($sql);
+       if (sizeof($results))
+       {
+           ob_start();
+           foreach ($results as $item)
+           {
+               $itemurl = "item.php?item={$item['ID']}";
+               include('templates/searchitem.php');
+           }
+            $result = ob_get_contents();
+                ob_end_clean();
+           /*
+            * echo "<a href='item.php?id={$result['ID']}'>{$result['i.SetName']} ' ' {$result['i.SetType']}</a>";
+*/
+       }
+       else
+       {
+           $result =  'No results';
+       }
    }
+
+include('templates/searchform.php');
 ?>
