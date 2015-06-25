@@ -5,8 +5,8 @@
 -->
 <?php
     include_once('db.php');
-$result = '';
-   if(isset($_POST['formsubmit'])) {
+    $result = '';
+    if(isset($_POST['formsubmit'])) {
        /*
        $query = DB::cleanse($_POST['query']);
        $search = $_POST['query'];

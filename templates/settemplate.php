@@ -25,28 +25,8 @@
     </style>
 </head>
 <body style="background-color: #999">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">Home</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="index.php">Home</a></li>
-                <li class="active"><a href="set.php">Sets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</nav>
+
+<?php include('navbar.php'); ?>
 
 <div class="container" style="background-color: #ffffff;">
     <div class="row">
@@ -55,6 +35,11 @@
             <div class="row">
                 <div class="col-sm-6">
                     <img src="" width="100%" height="250px">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                    <?php include('statsum.php'); ?>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="panel panel-default">

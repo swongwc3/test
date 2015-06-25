@@ -1,31 +1,26 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Sharon
- * Date: 6/19/2015
- * Time: 2:06 PM
- */
-?>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <style>
-body {
-    padding-top: 50px;
+        body {
+            padding-top: 50px;
         }
         .media p {
-    text-align: left;
+            text-align: left;
         }
-
     </style>
 </head>
+
 <body style="background-color: #999">
-<div class="container">
+
+<?php include('navbar.php'); ?>
+
+<div class="container" style="background-color:white">
     <div class="row">
         <div class="col-xs-12">
+            <h4>Search Database</h4>
             <form method="POST" action="searchform.php">
                 <input type="hidden" name="formsubmit" value="1" />
                 <!--
@@ -64,9 +59,13 @@ body {
         </div>
     </div>
     <?php
-    echo $result;
+        echo $result;
     ?>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
+
+
 </html>
