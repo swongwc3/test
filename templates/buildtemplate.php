@@ -26,22 +26,13 @@ include_once('itemdb.php');
 </head>
 <body style="background-color: #999">
 
-
 <?php
 include('templates/navbar.php');
 ?>
 
 <div class="container" style="background-color: #ffffff;">
 
-    <h2>Ice Burner Sets</h2>
 
-<?php
-    $sets = get_sets();
-
-    foreach ($sets as $set) {
-        echo '<a href=' . SITEURL . '/set.php/?set=' . $set['SetID'] . '><h4>' . $set['SetName'] . '</h4></a>';
-    }
-?>
 
 
 </div>

@@ -2,7 +2,8 @@
     <div class="col-sm-5">
         <p><strong><?php echo $setsum['Title']; ?></strong></p>
         <?php
-        if ($setsum['PA'] && $setsum['MA'] && $setsum['PD'] && $setsum['MD'])
+
+        if ($setsum['PA'] || isset($setsum['MA']) || isset($setsum['PD']) || isset($setsum['MD']))
         {
             echo '<div class="row"><div class="col-xs-6">';
             echo 'PA: ' . $setsum['PA'] . '</div><div class="col-xs-6">';
@@ -16,13 +17,17 @@
         <div class="row">
             <?php
             foreach ($setsum['Stats'] as $stat) {
-                if ($setsum[$stat])
+                if (isset($setsum[$stat]) && $setsum[$stat] != '0')
                 {
                     echo '<div class="col-xs-6">' . $stat . ' ' . $setsum[$stat] . '</div>';
                 }
             }
-            if ($setsum['SRes']) {
-                echo '<div class="col-xs-6">' . $setsum['SRes'] . '</div>';
+            if (isset($setsum['Elem'])) {
+                echo '<div class="col-xs-6">' . $setsum['Elem'] . ' Resist +' . $setsum['SRes'] . '</div>';
+            }
+
+            if (isset($setsum['SpEff'])) {
+                echo '<div class="col-xs-12">' . $setsum['SpEff'] . '</div>';
             }
             ?>
         </div>

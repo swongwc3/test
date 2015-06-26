@@ -27,7 +27,9 @@
                         echo '<p>' . $stat . ' ' . $item[$stat] . '</p>';
                     }
                 }
-                echo $item['SRes'];
+                if (isset($item['Elem'])) {
+                    echo $item['Elem'] . $item['SRes'];
+                }
                 echo $item['SpEff'];
                 echo $item['SetMessage'];
                 ?>

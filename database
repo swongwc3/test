@@ -1,4 +1,4 @@
-CREATE TABLE Items (ID int(8) primary KEY AUTO_INCREMENT, SetID int(8), TypeID int(8), PartID int(8), HP decimal(3,1), PA int(4), MA int(4), PD int(4), MD int(4), Crit decimal(3,1), ADmg decimal(3,1), RDmg decimal(3,1), ACharge decimal(3,1), ATime decimal(4,2), ASpd decimal(3,1), MSpd decimal(3,1), JSpd decimal(3,1), Acc decimal(3,1), Eva decimal(3,1), ARes int(4), SRes int(4), ResTypeID int(8), SpEff varchar(255), SetEffect tinyint(1));
+CREATE TABLE Items (ID int(8) primary KEY AUTO_INCREMENT, SetID int(8), TypeID int(8), PartID int(8), HP decimal(3,1), PA int(4), MA int(4), PD int(4), MD int(4), Crit decimal(3,1), ADmg decimal(3,1), RDmg decimal(3,1), ACharge decimal(3,1), ATime decimal(4,2), ASpd decimal(3,1), MSpd decimal(3,1), JSpd decimal(3,1), Acc decimal(3,1), Eva decimal(3,1), ARes int(4), SRes int(4), ElemID int(8), SpEff varchar(255), SetEffect tinyint(1));
 
 
 CREATE TABLE Category (CatID int(8) PRIMARY KEY AUTO_INCREMENT, CatName varchar(50));
@@ -29,13 +29,13 @@ INSERT INTO Type (TypeName, CatID) Values ('Accessory (Mouth)', 2);
 INSERT INTO Type (TypeName, CatID) Values ('Accessory (Top)', 2);
 INSERT INTO Type (TypeName, CatID) Values ('Accessory (Bottom)', 2);
 INSERT INTO Type (TypeName, CatID) Values ('Accessory (Gloves)', 2);
-INSERT INTO Type (TypeName, CatID) Values ('B2pcs.', 1);
-INSERT INTO Type (TypeName, CatID) Values ('B3pcs.', 1);
-INSERT INTO Type (TypeName, CatID) Values ('B4pcs.', 1);
-INSERT INTO Type (TypeName, CatID) Values ('B5pcs.', 1);
-INSERT INTO Type (TypeName, CatID) Values ('A2pcs.', 2);
-INSERT INTO Type (TypeName, CatID) Values ('A3pcs.', 2);
-INSERT INTO Type (TypeName, CatID) Values ('A4pcs.', 2);
+INSERT INTO Type (TypeName, CatID) Values ('B2pcs.', 0);
+INSERT INTO Type (TypeName, CatID) Values ('B3pcs.', 0);
+INSERT INTO Type (TypeName, CatID) Values ('B4pcs.', 0);
+INSERT INTO Type (TypeName, CatID) Values ('B5pcs.', 0);
+INSERT INTO Type (TypeName, CatID) Values ('A2pcs.', 0);
+INSERT INTO Type (TypeName, CatID) Values ('A3pcs.', 0);
+INSERT INTO Type (TypeName, CatID) Values ('A4pcs.', 0);
 
 CREATE TABLE Sets (SetID int(8) PRIMARY KEY AUTO_INCREMENT, SetName varchar(50), SetAbbr varchar(10));
 INSERT INTO Sets (SetName, SetAbbr) Values ('Arch Angel', 'AA');
@@ -43,6 +43,7 @@ INSERT INTO Sets (SetName, SetAbbr) Values ('Arch Devil', 'AD');
 INSERT INTO Sets (SetName, SetAbbr) Values ('El Officer', 'EO');
 INSERT INTO Sets (SetName, SetAbbr) Values ('Nasod Battle Suit', 'NBS');
 INSERT INTO Sets (SetName, SetAbbr) Values ('Nasod Battle Suit MK-2', 'NBS MK-2');
+INSERT INTO SETS (SetName, SetAbbr) Values ('Ignition Caligo', 'IgC');
 
 CREATE TABLE Element (ElemID int(8) PRIMARY KEY AUTO_INCREMENT, ElemName varchar(20));
 INSERT INTO Element (ElemName) Values ('Fire'),('Water'),('Poison'),('Wind'),('Light'),('Darkness');
@@ -52,15 +53,18 @@ INSERT INTO Items (SetID, TypeID, PartID, HP, SetEffect) Values (1, 2, 6, 2.0, 1
 INSERT INTO Items (SetID, TypeID, PartID, HP, SetEffect) Values (1, 3, 7, 2.0, 1);
 INSERT INTO Items (SetID, TypeID, PartID, Acc, SetEffect) Values (1, 4, 8, 2.0, 1);
 INSERT INTO Items (SetID, TypeID, PartID, MSpd, JSpd, SetEffect) Values (1, 5, 9, 2.0, 2.0, 1);
-INSERT INTO Items (SetID, TypeID, PartID, Eva, SetEffect) Values (1, 13, 55, 2, 2);
-INSERT INTO Items (SetID, TypeID, PartID, ARes, SetEffect) Values (1, 15, 55, 40, 2);
-INSERT INTO Items (SetID, TypeID, PartID, PA, MA, PD, MD, SetEffect) Values (1, 15, 55, 100, 100, 100, 100, 2);
+INSERT INTO Items (SetID, TypeID, PartID, Eva, SetEffect) Values (1, 13, 56, 2, 2);
+INSERT INTO Items (SetID, TypeID, PartID, ARes, SetEffect) Values (1, 15, 56, 40, 2);
+INSERT INTO Items (SetID, TypeID, PartID, PA, MA, PD, MD, SetEffect) Values (1, 15, 56, 100, 100, 100, 100, 2);
 INSERT INTO Items (SetID, TypeID, PartID, Crit, Eva, SetEffect) VALUES (1, 6, 10, 2.0, 2.0, 0);
 INSERT INTO Items (SetID, TypeID, PartID, PA, MA, PD, MD, Crit, Acc, SetEffect) VALUES (1, 8, 30, 20, 20, 5, 5, 2.0, 2.0, 1);
 INSERT INTO Items (SetID, TypeID, PartID, PA, MA, PD, MD, ASpd, MSpd, JSpd, SetEffect) VALUES (1, 10, 41, 25, 25, 10, 10, 1.0, 3.0, 3.0, 1);
 INSERT INTO Items (SetID, TypeID, PartID, PA, MA, Crit, MSpd, JSpd, SetEffect) VALUES (1, 11, 49, 25, 25, 1.5, 3.0, 3.0, 1);
-INSERT INTO Items (SetID, TypeID, PartID, ATime, SetEffect) VALUES (1, 17, 55, 30, 2);
-INSERT INTO Items (SetID, TypeID, PartID, ASpd, SetEffect) VALUES (1, 18, 55, 2.5, 2);
+INSERT INTO Items (SetID, TypeID, PartID, ATime, SetEffect) VALUES (1, 17, 56, 30, 2);
+INSERT INTO Items (SetID, TypeID, PartID, ASpd, SetEffect) VALUES (1, 18, 56, 2.5, 2);
 
 CREATE TABLE Parts (PartID int(8) PRIMARY KEY AUTO_INCREMENT, PartName varchar(20));
-INSERT INTO Parts (PartName) Values ('Hat'),('Hair'),('Veil'),('Hair v.Dark'),('Helmet'),('Top'),('Bottom'),('Gloves'),('Shoes'),('Weapon'),('Sword'),('Saber'),('Staff'),('Bow'),('Crossbow'),('Blade'),('Scimitar'),('Drones'),('Cannon'),('Claymore'),('Broadsword'),('Spear'),('Dynamos'),('Mini-Me'),('Hell Spirits'),('Horns'),('Arithmetic Unit'),('Bandana'),('Headgear'),('Crown'),('Tiara'),('Visor'),('Headdress'),('Eyepiece'),('Monocle'),('Glasses'),('Mask'),('Ibis'),('Molar'),('Earrings'),('Wings'),('Jetpack'),('Honor'),('Cape'),('Eclipse'),('Shade'),('Shield'),('Dominator'),('Leg Wings'),('Ceremonial'),('Backswords'),('Force'),('Aura'),('Light'), ('');
+INSERT INTO Parts (PartName) Values ('Hat'),('Hair'),('Veil'),('Hair v.Dark'),('Helmet'),('Top'),('Bottom'),('Gloves'),('Shoes'),('Weapon'),('Sword'),('Saber'),('Staff'),('Bow'),('Crossbow'),('Blade'),('Scimitar'),('Drones'),('Cannon'),('Claymore'),('Broadsword'),('Spear'),('Dynamos'),('Mini-Me'),('Hell Spirits'),('Horns'),('Arithmetic Unit'),('Bandana'),('Headgear'),('Crown'),('Tiara'),('Visor'),('Headdress'),('Eyepiece'),('Monocle'),('Glasses'),('Mask'),('Ibis'),('Molar'),('Earrings'),('Wings'),('Jetpack'),('Honor'),('Cape'),('Eclipse'),('Shade'),('Shield'),('Dominator'),('Leg Wings'),('Ceremonial'),('Backswords'),('Force'),('Aura'),('Light'), ('Tail'), ('');
+
+
+CREATE TABLE `stat_summaries` (SetID int(8) NOT NULL, `Block` CHAR(4) NOT NULL, PRIMARY KEY (SetID, `Block`), HP decimal(3,1), PA int(4), MA int(4), PD int(4), MD int(4), Crit decimal(3,1), ADmg decimal(3,1), RDmg decimal(3,1), ACharge decimal(3,1), ATime decimal(4,2), ASpd decimal(3,1), MSpd decimal(3,1), JSpd decimal(3,1), Acc decimal(3,1), Eva decimal(3,1), ARes int(4), SRes int(4), ElemID int(8), SpEff varchar(255));

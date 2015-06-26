@@ -30,8 +30,12 @@
                 <label for="sets">Select Set</label>
                 <select name="sets" id="sets">
                     <option value="0"></option>
-                    <option value="AA">Arch Angel</option>
-                    <option value="AD">Arch Devil</option>
+                    <?php
+                        $setarray = get_sets();
+                        foreach ($setarray as $set) {
+                            echo'<option value=' . $set['SetID'] . '>' . $set['SetName'] . '</option>';
+                        }
+                    ?>
                 </select>
                 <br>
                 <label for="stat" id="stat">Select Stat</label>
@@ -54,6 +58,18 @@
                     <option value="Eva">Evasion</option>
                     <option value="ARes">All Elemental Resist</option>
                 </select>
+                <br>
+                <label for="slot">Select Costume Slot</label>
+                <select name="slot" id="slot">
+                    <option value="0"></option>
+                    <?php
+                    $typearray = get_types();
+                    foreach ($typearray as $type) {
+                        echo'<option value=' . $type['TypeID'] . '>' . $type['TypeName'] . '</option>';
+                    }
+                    ?>
+                </select>
+                <br>
                 <input type="submit" value="Search" />
             </form>
         </div>

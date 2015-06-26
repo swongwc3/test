@@ -5,7 +5,7 @@
  * Date: 6/19/2015
  * Time: 11:45 AM
  */
-
+include_once('config.php');
 include_once('itemdb.php');
 include_once('corefunctions.php');
 

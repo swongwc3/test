@@ -1,5 +1,5 @@
 <?php
-
+    include_once('config.php');
     include_once('db.php');
     include_once('corefunctions.php');
 
@@ -12,20 +12,30 @@
     $details = DB::sql("Select * FROM sets WHERE SetID=$setID");
     $details = $details[0];
 
-    $items = array();
+    $full = array();
+    $body = array();
+    $acc = array();
 
-    foreach ($results as $result) {
-        if (isset($items[$result['TypeName']])) {
-            $items[$result['TypeName'].'2'] = $result;
+    foreach ($results as $item) {
+        if (isset($full[$item['TypeName']])) {
+            $full[$item['TypeName'].'2'] = $item;
         }
-        else
-            $items[$result['TypeName']] = $result;
+        else {
+            $full[$item['TypeName']] = $item;
+        }
+
+        if ($item['CatID'] == '1') {
+            if (isset($body[$item['TypeName']])) {
+                $body[$item['TypeName'].'2'] = $item;
+            }
+            $body[$item['TypeName']] = $item;
+        }
+        if ($item['CatID'] == '2') {
+            $acc[$item['TypeName']] = $item;
+        }
     }
 
-    foreach ($items as $item) {
-        $item = process_stats($item);
-
-    }
+    $items = $full;
 
     include('templates/settemplate.php');
 ?>

@@ -39,7 +39,7 @@
       <column name="Eva" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
       <column name="ARes" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="SRes" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="ResTypeID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ElemID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="SpEff" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="SetEffect" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="ID"/>
@@ -49,17 +49,35 @@
       <column name="PartName" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="PartID"/>
     </table>
-    <table name="sample" schema="" catalog="my_db" type="TABLE">
-      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="Name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="LName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="ID"/>
-    </table>
     <table name="sets" schema="" catalog="my_db" type="TABLE">
       <column name="SetID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="SetName" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="SetAbbr" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="SetID"/>
+    </table>
+    <table name="stat_summaries" schema="" catalog="my_db" type="TABLE">
+      <column name="SetID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Block" sqlType="CHAR" precision="4" scale="0" nullable="false" jdbcType="1"/>
+      <column name="HP" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="PA" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="MA" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PD" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="MD" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Crit" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="ADmg" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="RDmg" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="ACharge" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="ATime" sqlType="DECIMAL" precision="4" scale="2" nullable="true" jdbcType="3"/>
+      <column name="ASpd" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="MSpd" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="JSpd" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="Acc" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="Eva" sqlType="DECIMAL" precision="3" scale="1" nullable="true" jdbcType="3"/>
+      <column name="ARes" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SRes" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ElemID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SpEff" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="SetID,Block"/>
     </table>
     <table name="type" schema="" catalog="my_db" type="TABLE">
       <column name="TypeID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

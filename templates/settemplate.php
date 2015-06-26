@@ -75,7 +75,7 @@
                             <div class="row">
                                 <?php
                                 foreach ($items as $key => $value) {
-                                    if ($items[$key]['PartID'] != '55')
+                                    if ($items[$key]['PartName'] != '')
                                     {
                                         echo '<div class="col-md-3 col-sm-4 col-xs-6">';
                                         echo $items[$key]['PartName'];
@@ -100,7 +100,7 @@
                         <div class="col-md-12">
                             <?php
                                 foreach ($items as $item) {
-                                    if ($item['CatID'] == '1') {
+                                    if ($item['CatID'] == '1' && $item['PartName'] != '') {
                                         $item = process_stats($item);
                                         $item['SetName'] = '';
                                         $item['SetMessage'] = '';
@@ -112,11 +112,40 @@
                         <div class="col-md-12">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <p>Set Effects:</p>
-                                    <ul>
-                                        <li>line 1</li>
-                                        <li>line 2</li>
-                                    </ul>
+                                    <p><strong>Set Effects:</strong></p>
+                                    <?php
+                                    foreach ($items as $item) {
+                                        if ($item['CatID'] == '1' && $item['PartName'] == '') {
+                                            $item = process_stats($item);
+                                            echo '<p>' . $item['TypeName'];
+                                        if ($item['PA'] || $item['MA'] || $item['PD'] || $item['MD'])
+                                        {
+                                            echo ' ' . $item['PA'];
+                                            echo ' ' . $item['MA'];
+                                            echo ' ' . $item['PD'];
+                                            echo ' ' . $item['MD'];
+                                        }
+                                        foreach ($item['Stats'] as $stat) {
+                                            if ($item[$stat])
+                                            {
+                                                echo ' ' . $stat . ' ' . $item[$stat];
+                                            }
+                                        }
+                                            echo $item['SRes'];
+                                            echo $item['SpEff'];
+                                            echo '</p>';
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <?php
+                                        $items = $body;
+                                        include('statsum.php');
+                                        $items = $full;
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +163,7 @@
                         <div class="col-md-12">
                             <?php
                             foreach ($items as $item) {
-                                if ($item['CatID'] == '2') {
+                                if ($item['CatID'] == '2' && $item['PartName'] != '') {
                                     $item = process_stats($item);
                                     $item['SetName'] = '';
                                     $item['SetMessage'] = '';
@@ -146,11 +175,41 @@
                         <div class="col-md-12">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <p>Set Effects:</p>
-                                    <ul>
-                                        <li>line 1</li>
-                                        <li>line 2</li>
-                                    </ul>
+                                    <p><strong>Set Effects:</strong></p>
+                                    <?php
+                                    foreach ($items as $item) {
+                                        if ($item['CatID'] == '2' && $item['PartName'] == '') {
+                                            $item = process_stats($item);
+                                            echo '<p>' . $item['TypeName'];
+                                            if ($item['PA'] || $item['MA'] || $item['PD'] || $item['MD'])
+                                            {
+                                                echo ' ' . $item['PA'];
+                                                echo ' ' . $item['MA'];
+                                                echo ' ' . $item['PD'];
+                                                echo ' ' . $item['MD'];
+                                            }
+                                            foreach ($item['Stats'] as $stat) {
+                                                if ($item[$stat])
+                                                {
+                                                    echo ' ' . $stat . ' ' . $item[$stat];
+                                                }
+                                            }
+                                            echo $item['SRes'];
+                                            echo $item['SpEff'];
+                                            echo '</p>';
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <?php
+                                    $items = $acc;
+                                    $setsum = array();
+                                    include('statsum.php');
+                                    $items = $full;
+                                    ?>
                                 </div>
                             </div>
                         </div>

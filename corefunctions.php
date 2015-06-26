@@ -6,11 +6,13 @@
  * Time: 12:03 PM
  */
 
+include_once('itemdb.php');
+
 function process_stats($item)
 {
     $item['ItemName'] = $item['SetName'] . ' ' . $item['PartName'];
 
-    $item['SetName'] = '<p>Set: ' . $item['SetName'] . ' (' . $item['SetAbbr'] . ')';
+    $item['SetName'] = '<p>Set: ' . '<a href=' . SITEURL . '/set.php/?set=' . $item['SetID'] . '>' .$item['SetName'] . '</a> (' . $item['SetAbbr'] . ')';
 
     $stats = array('HP', 'Crit', 'ADmg', 'RDmg', 'ACharge', 'ATime', 'ASpd', 'MSpd', 'JSpd', 'Acc', 'Eva', 'ARes');
 
@@ -33,7 +35,7 @@ function process_stats($item)
     }
 
     if ($item['SRes']) {
-        $item['SRes'] = '<p>' . get_sres($item['ID']) . '</p>';
+        $item['Elem'] = get_elem($item['ElemID']) . ' Resist +';
     }
 
     if ($item['SpEff']) {
@@ -51,6 +53,8 @@ function process_stats($item)
             $item['SetMessage'] = '';
             break;
     }
+
+
 
     return $item;
 };
