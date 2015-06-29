@@ -6,8 +6,10 @@
  * Time: 11:01 AM
  */
 
-include_once('itemdb.php');
 
-add_summary(6);
+
+// include_once('itemdb.php');
+
+// add_summary(2);
 
 //include('templates/buildtemplate.php');

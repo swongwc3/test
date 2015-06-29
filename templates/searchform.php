@@ -29,11 +29,13 @@
         -->
                 <label for="sets">Select Set</label>
                 <select name="sets" id="sets">
-                    <option value="0"></option>
+                    <option value="0" <?php echo (isset($_POST['sets'])&&$_POST['sets']=='0')?' selected':'' ?>></option>
                     <?php
                         $setarray = get_sets();
                         foreach ($setarray as $set) {
-                            echo'<option value=' . $set['SetID'] . '>' . $set['SetName'] . '</option>';
+                            echo '<option value=' . $set['SetID'];
+                            echo (isset($_POST['sets'])&&$_POST['sets']=="{$set['SetID']}")?' selected':'';
+                            echo '>' . $set['SetName'] . '</option>';
                         }
                     ?>
                 </select>
@@ -41,22 +43,35 @@
                 <label for="stat" id="stat">Select Stat</label>
                 <select name="stat">
                     <option value="0"></option>
-                    <option value="HP">HP</option>
-                    <option value="PA">Physical Attack</option>
-                    <option value="MA">Magic Attack</option>
-                    <option value="PD">Physical Defense</option>
-                    <option value="MD">Magical Defense</option>
-                    <option value="Crit">Critical</option>
-                    <option value="ADmg">Additional Damage</option>
-                    <option value="RDmg">Reduced Damage</option>
-                    <option value="ACharge">Awakening Charge</option>
-                    <option value="ATime">Awakening Time</option>
-                    <option value="ASpd">Attack Speed</option>
-                    <option value="MSpd">Movement Speed</option>
-                    <option value="JSpd">Jump Speed</option>
-                    <option value="Acc">Accuracy</option>
-                    <option value="Eva">Evasion</option>
-                    <option value="ARes">All Elemental Resist</option>
+                    <option value="HP" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='HP')?' selected':'' ?>>HP</option>
+                    <option value="PA" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='PA')?' selected':'' ?>>Physical Attack</option>
+                    <option value="MA" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='MA')?' selected':'' ?>>Magic Attack</option>
+                    <option value="PD "<?php echo (isset($_POST['stat'])&&$_POST['stat']=='PD')?' selected':'' ?>>Physical Defense</option>
+                    <option value="MD" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='MD')?' selected':'' ?>>Magical Defense</option>
+                    <option value="Crit" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='Crit')?' selected':'' ?>>Critical</option>
+                    <option value="ADmg" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='ADmg')?' selected':'' ?>>Additional Damage</option>
+                    <option value="RDmg" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='RDmg')?' selected':'' ?>>Reduced Damage</option>
+                    <option value="ACharge" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='ACharge')?' selected':'' ?>>Awakening Charge</option>
+                    <option value="ATime" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='ATime')?' selected':'' ?>>Awakening Time</option>
+                    <option value="ASpd" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='ASpd')?' selected':'' ?>>Attack Speed</option>
+                    <option value="MSpd" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='MSpd')?' selected':'' ?>>Movement Speed</option>
+                    <option value="JSpd" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='JSpd')?' selected':'' ?>>Jump Speed</option>
+                    <option value="Acc" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='Acc')?' selected':'' ?>>Accuracy</option>
+                    <option value="Eva" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='Eva')?' selected':'' ?>>Evasion</option>
+                    <option value="ARes" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='ARes')?' selected':'' ?>>All Elemental Resist</option>
+                    <option value="SRes" <?php echo (isset($_POST['stat'])&&$_POST['stat']=='SRes')?' selected':'' ?>>Elemental Resist</option>
+                </select>
+                <br>
+                <label for="elem" id="elem">Select Element</label>
+                <select name="elem">
+                    <?php
+                    $elemarray = get_elems();
+                    foreach ($elemarray as $elem) {
+                        echo '<option value=' . $elem['ElemID'];
+                        echo (isset($_POST['elem'])&&$_POST['elem']=="{$elem['ElemID']}")?' selected':'';
+                        echo '>' . $elem['ElemName'] . '</option>';
+                    }
+                    ?>
                 </select>
                 <br>
                 <label for="slot">Select Costume Slot</label>
@@ -65,7 +80,11 @@
                     <?php
                     $typearray = get_types();
                     foreach ($typearray as $type) {
-                        echo'<option value=' . $type['TypeID'] . '>' . $type['TypeName'] . '</option>';
+                        if ($type['TypeID'] < 13) {
+                            echo '<option value=' . $type['TypeID'];
+                            echo (isset($_POST['slot'])&&$_POST['slot']=="{$type['TypeID']}")?' selected':'';
+                            echo '>' . $type['TypeName'] . '</option>';
+                        }
                     }
                     ?>
                 </select>

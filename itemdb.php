@@ -30,6 +30,10 @@ function get_elem($elemID) {
     return $result['ElemName'];
 }
 
+function get_elems() {
+    return DB::sql("SELECT * FROM element");
+}
+
 function get_sets() {
     return DB::sql("SELECT * FROM sets");
 }

@@ -7,3 +7,21 @@
  */
 
 define('SITEURL', "http://localhost/test");
+
+function get_statnamearray()
+{
+    global $statnamearray;
+    if (isset($statnamearray))
+        return $statnamearray;
+    else {
+        $results = DB::sql('SELECT * FROM statnames');
+        foreach ($results as $stat) {
+            $out[$stat['abbr']] = $stat;
+        }
+        return $statnamearray = $out;
+    }
+
+}
+
+$var = get_statnamearray();
+echo $var['HP']['fullname'];

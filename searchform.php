@@ -15,9 +15,10 @@ if(isset($_POST['formsubmit'])) {
     $search = $_POST['query'];
     */
 
-    $sets = $_POST['sets'];
+    $sets = (int) $_POST['sets'];
     $stat = $_POST['stat'];
     $slot = $_POST['slot'];
+    $elem = (int) $_POST['elem'];
 
     $search = "";
 
@@ -25,15 +26,21 @@ if(isset($_POST['formsubmit'])) {
         $sets = "i.SetID=" . $sets;
         $search = $sets;
     }
+
     if ($stat != '0') {
-        $stat = $stat . " IS NOT NULL";
+        if ($stat == 'SRes') {
+            $stat = "ElemID IS NOT NULL AND ElemID =$elem";
+        }
+        else {
+            $stat = $stat . " IS NOT NULL";
+
+        }
         if ($search != "") {
             $search = $search . " AND " . $stat;
         }
         else {
             $search = $stat;
         }
-
     }
 
     if ($slot != '0') {
@@ -46,16 +53,8 @@ if(isset($_POST['formsubmit'])) {
         }
     }
 
+
     $sql = "SELECT i.*, s.SetName, s.SetAbbr, t.TypeName, p.PartName FROM items i INNER JOIN sets s ON i.SetID=s.SetID JOIN type t ON i.TypeID=t.TypeID JOIN parts p ON i.PartID=p.PartID WHERE $search ORDER BY i.ID";
-
-    /*
-     *
-     * SELECT i.*, s.SetName, s.SetAbbr, t.TypeName, p.PartName FROM items i INNER JOIN sets s ON i.SetID=s.SetID JOIN type t ON i.TypeID=t.TypeID JOIN parts p ON i.PartID=p.PartID WHERE i.ID=$ID ORDER BY i.ID
-     */
-
-    /*
-     * $sql = "SELECT i.*, s.SetName, s.SetAbbr,  t.TypeName FROM items i INNER JOIN sets s ON i.SetID=s.SetID JOIN type t ON i.TypeID=t.TypeID WHERE $search ORDER BY i.ID";
-    */
 
     $results = DB::sql($sql);
     if (sizeof($results))

@@ -15,7 +15,7 @@
                 <li><a href="<?php echo SITEURL; ?>/index.php">Home</a></li>
                 <li><a href="<?php echo SITEURL; ?>/sets.php">Sets</a></li>
                 <li><a href="<?php echo SITEURL; ?>/searchform.php">Search Sets</a></li>
-                <li><a href="<?php echo SITEURL; ?>/build.php">Build</a></li>
+                <li><a href="<?php echo SITEURL; ?>/ranking.php">Rank by Stats</a></li>
             </ul>
         </div>
     </div>
