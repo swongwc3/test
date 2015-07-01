@@ -79,6 +79,12 @@
       <column name="SpEff" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="SetID,Block"/>
     </table>
+    <table name="statnames" schema="" catalog="my_db" type="TABLE">
+      <column name="Abbr" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FullName" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Format" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Abbr"/>
+    </table>
     <table name="type" schema="" catalog="my_db" type="TABLE">
       <column name="TypeID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="TypeName" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>

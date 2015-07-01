@@ -9,9 +9,20 @@
                         </a>
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading"><a
-                                href="<?php echo "item.php?item={$item['ID']}" ?>"><?php echo $item['SetName'];
+                        <h4 class="media-heading">
+                            <a href="<?php echo "item.php?item={$item['ID']}" ?>"><?php echo $item['SetName'];
                                 echo ' ' . $item['PartName'] ?></a></h4>
+                            <?php
+                            if ($stat != '0') {
+                                $statarray = get_statnamearray();
+                                if ($stat == 'SRes') {
+                                    echo '<p>' . $item['Elem'] . 'Resist ' . sprintf($statarray[$stat]['Format'],$item[$stat]) . '</p>';
+                                }
+                                else {
+                                    echo '<p>' . $statarray[$stat]['FullName'] . ' ' . sprintf($statarray[$stat]['Format'],$item[$stat]) . '</p>';
+                                }
+                            }
+                            ?>
                     </div>
                 </div>
             </div>

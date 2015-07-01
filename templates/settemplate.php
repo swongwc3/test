@@ -29,6 +29,7 @@
 <?php include('navbar.php'); ?>
 
 <div class="container" style="background-color: #ffffff;">
+
     <div class="row">
         <div class="col-md-12">
             <h2><?php echo $details['SetName']; ?></h2>
@@ -93,9 +94,8 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4>Armor</h4>
-
+                <div class="panel-heading"><button type="button" id="armor" class="btn btn-default">Armor</button></div>
+                <div class="panel-body" id="armorinfo">
                     <div class="row">
                         <div class="col-md-12">
                             <?php
@@ -112,42 +112,25 @@
                         <div class="col-md-12">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <p><strong>Set Effects:</strong></p>
                                     <?php
-                                    foreach ($items as $item) {
-                                        if ($item['CatID'] == '1' && $item['PartName'] == '') {
-                                            $item = process_stats($item);
-                                            echo '<p>' . $item['TypeName'];
-                                        if ($item['PA'] || $item['MA'] || $item['PD'] || $item['MD'])
-                                        {
-                                            echo ' ' . $item['PA'];
-                                            echo ' ' . $item['MA'];
-                                            echo ' ' . $item['PD'];
-                                            echo ' ' . $item['MD'];
-                                        }
-                                        foreach ($item['Stats'] as $stat) {
-                                            if ($item[$stat])
-                                            {
-                                                echo ' ' . $stat . ' ' . $item[$stat];
-                                            }
-                                        }
-                                            echo $item['SRes'];
-                                            echo $item['SpEff'];
-                                            echo '</p>';
-                                        }
-                                    }
-                                    ?>
+                                    $effect = 1;
+                                    include('seteffecttemplate.php'); ?>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <?php
-                                        $items = $body;
-                                        include('statsum.php');
-                                        $items = $full;
-                                    ?>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <?php
+                                            $items = $body;
+                                            include('statsum.php');
+                                            $items = $full;
+                                            ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -156,9 +139,8 @@
 
         <div class="col-sm-6">
             <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4>Weapon / Accessory </h4>
-
+                <div class="panel-heading"><button type="button" id="weap" class="btn btn-default">Weapon / Accessory</button></div>
+                <div class="panel-body" id="weapinfo">
                     <div class="row">
                         <div class="col-md-12">
                             <?php
@@ -175,31 +157,9 @@
                         <div class="col-md-12">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <p><strong>Set Effects:</strong></p>
                                     <?php
-                                    foreach ($items as $item) {
-                                        if ($item['CatID'] == '2' && $item['PartName'] == '') {
-                                            $item = process_stats($item);
-                                            echo '<p>' . $item['TypeName'];
-                                            if ($item['PA'] || $item['MA'] || $item['PD'] || $item['MD'])
-                                            {
-                                                echo ' ' . $item['PA'];
-                                                echo ' ' . $item['MA'];
-                                                echo ' ' . $item['PD'];
-                                                echo ' ' . $item['MD'];
-                                            }
-                                            foreach ($item['Stats'] as $stat) {
-                                                if ($item[$stat])
-                                                {
-                                                    echo ' ' . $stat . ' ' . $item[$stat];
-                                                }
-                                            }
-                                            echo $item['SRes'];
-                                            echo $item['SpEff'];
-                                            echo '</p>';
-                                        }
-                                    }
-                                    ?>
+                                    $effect = 2;
+                                    include('seteffecttemplate.php'); ?>
                                 </div>
                             </div>
                             <div class="panel panel-default">
@@ -220,7 +180,21 @@
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<script src="<?php echo SITEURL; ?>/js/bootstrap.min.js"></script>
+
+<script language="JavaScript">
+    $('#armorinfo').hide();
+    $('#weapinfo').hide();
+    $().ready(function () {
+        $('#armor').click(function () {
+            $('#armorinfo').toggle();
+        });
+        $('#weap').click(function () {
+            $('#weapinfo').toggle();
+        });
+    });
+</script>
+
 </body>
 
 </html>

@@ -9,31 +9,40 @@
         <?php echo $item['SetName']; ?>
         <p>Slot: <?php echo $item['TypeName']; ?></p>
         <div class="row">
-            <?php
-            if ($item['PA'] && $item['MA'] && $item['PD'] && $item['MD'])
-            {
-                echo '<div class="col-sm-4"><div class="row"><div class="col-xs-6">';
-                echo $item['PA'] . '</div><div class="col-xs-6">';
-                echo $item['MA'] . '</div><div class="col-xs-6">';
-                echo $item['PD'] . '</div><div class="col-xs-6">';
-                echo $item['MD'] . '</div></div></div>';
-            }
-            ?>
-            <div class="col-sm-8">
                 <?php
                 foreach ($item['Stats'] as $stat) {
-                    if ($item[$stat])
+                    if (isset($item[$stat]))
                     {
-                        echo '<p>' . $stat . ' ' . $item[$stat] . '</p>';
+                        $statarray = get_statnamearray();
+                        if ($stat == 'PA' || $stat == 'MA' || $stat == 'PD' || $stat == 'MD') {
+                            echo '<div class="col-sm-3 col-xs-6">';
+                            echo $statarray[$stat]['Abbr'] . ' +' . sprintf($statarray[$stat]['Format'], $item[$stat]);
+                            echo '</div>';
+                        }
+                        elseif ($stat == 'SRes') {
+                            $elemarray = get_elems();
+                            echo '<div class="col-sm-6">';
+                            echo $elemarray[$item['ElemID']]['ElemName'] . ' ' . sprintf($statarray[$stat]['Format'],$item[$stat]);
+                            echo '</div>';
+                        }
+                        else {
+                            echo '<div class="col-sm-6">';
+                            echo $statarray[$stat]['FullName'] . ' ' . sprintf($statarray[$stat]['Format'],$item[$stat]);
+                            echo '</div>';
+                        }
                     }
                 }
-                if (isset($item['Elem'])) {
-                    echo $item['Elem'] . $item['SRes'];
+                if (isset($item['SpEff'])) {
+                    echo '<div class="col-sm-8">';
+                    echo $item['SpEff'];
+                    echo '</div>';
                 }
-                echo $item['SpEff'];
-                echo $item['SetMessage'];
+                if (isset($item['SetMessage'])) {
+                    echo '<div class="col-sm-8">';
+                    echo $item['SetMessage'];
+                    echo '</div>';
+                }
                 ?>
             </div>
         </div>
     </div>
-</div>

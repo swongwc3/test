@@ -14,29 +14,9 @@ function process_stats($item)
 
     $item['SetName'] = '<p>Set: ' . '<a href=' . SITEURL . '/set.php/?set=' . $item['SetID'] . '>' .$item['SetName'] . '</a> (' . $item['SetAbbr'] . ')';
 
-    $stats = array('HP', 'Crit', 'ADmg', 'RDmg', 'ACharge', 'ATime', 'ASpd', 'MSpd', 'JSpd', 'Acc', 'Eva', 'ARes');
+    $stats = array('PA', 'MA', 'PD', 'MD', 'HP', 'Crit', 'ADmg', 'RDmg', 'ACharge', 'ATime', 'ASpd', 'MSpd', 'JSpd', 'Acc', 'Eva', 'ARes', 'SRes');
 
     $item['Stats'] = $stats;
-
-    if ($item['PA']) {
-        $item['PA'] = 'PA: ' . $item['PA'];
-    }
-
-    if ($item['MA']) {
-        $item['MA'] = 'MA: ' . $item['MA'];
-    }
-
-    if ($item['PD']) {
-        $item['PD'] = 'PD: ' . $item['PD'];
-    }
-
-    if ($item['MD']) {
-        $item['MD'] = 'MD: ' . $item['MD'];
-    }
-
-    if ($item['SRes']) {
-        $item['Elem'] = get_elem($item['ElemID']) . ' Resist +';
-    }
 
     if ($item['SpEff']) {
         $item['SpEff'] = '<p>' . $item['SpEff'] . '</p>';
@@ -53,8 +33,5 @@ function process_stats($item)
             $item['SetMessage'] = '';
             break;
     }
-
-
-
     return $item;
 };

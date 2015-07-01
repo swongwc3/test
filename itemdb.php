@@ -30,18 +30,6 @@ function get_elem($elemID) {
     return $result['ElemName'];
 }
 
-function get_elems() {
-    return DB::sql("SELECT * FROM element");
-}
-
-function get_sets() {
-    return DB::sql("SELECT * FROM sets");
-}
-
-function get_types() {
-    return DB::sql("SELECT * FROM type");
-}
-
 function add_summary($setID) {
     $results = DB::sql("SELECT i.*, s.SetName, s.SetAbbr, t.TypeName, t.CatID, p.PartName, p.PartID FROM items i INNER JOIN sets s ON i.SetID=s.SetID JOIN type t ON i.TypeID=t.TypeID JOIN parts p ON i.PartID=p.PartID WHERE i.SetID=$setID ORDER BY i.ID");
 
